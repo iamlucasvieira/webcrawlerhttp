@@ -13,7 +13,13 @@ function main() {
 
     const url = process.argv[2];
     console.log("Crawling website:", url);
-    crawlPage(url);
+    // Iterate over the pages object and log the pages
+    crawlPage(url, url, {}).then((pages) => {
+        console.log("📚 Pages:");
+        Object.entries(pages).forEach(([url, count]) => {
+            console.log(`- ${url}: ${count}`);
+        });
+    });
 }
 
 main();
