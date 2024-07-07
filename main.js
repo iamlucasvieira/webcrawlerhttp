@@ -1,4 +1,5 @@
 const { crawlPage } = require("./crawl.js");
+const { printReport } = require("./report.js");
 
 function main() {
     const expectedLength = 3;
@@ -15,10 +16,7 @@ function main() {
     console.log("Crawling website:", url);
     // Iterate over the pages object and log the pages
     crawlPage(url, url, {}).then((pages) => {
-        console.log("📚 Pages:");
-        Object.entries(pages).forEach(([url, count]) => {
-            console.log(`- ${url}: ${count}`);
-        });
+        printReport(pages);
     });
 }
 
